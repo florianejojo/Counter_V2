@@ -2,31 +2,34 @@ import { useState } from "react";
 import "./App.css";
 import Counter from "./Counter";
 
-const addCounter = (tab, setTab, count, setCount) => {
+const addCounter = (tab, setTab) => {
     const newTab = [...tab];
-    newTab.push(<Counter count={count} setCount={setCount} />);
+    newTab.push(<Counter />);
     setTab(newTab);
 };
 
 function App() {
-    const [count, setCount] = useState(0);
-    const [tab, setTab] = useState([
-        <Counter count={count} setCount={setCount} />,
-        ,
-    ]);
+    const [tab, setTab] = useState([<Counter />]);
+    const [counterNb, setCounterNb] = useState(1);
 
     return (
         <div className="container">
-            <button
-                id="addCounter"
-                onClick={() => {
-                    addCounter(tab, setTab, count, setCount);
-                }}
-            >
-                Add counter
-            </button>
+            <div>
+                {counterNb < 3 && (
+                    <button
+                        id="addCounter"
+                        onClick={() => {
+                            console.log(counterNb);
+                            addCounter(tab, setTab);
+                            setCounterNb(counterNb + 1);
+                        }}
+                    >
+                        Add counter
+                    </button>
+                )}
+            </div>
+
             <div>{tab}</div>
-            {/* <Counter count={count} setCount={setCount} /> */}
         </div>
     );
 }

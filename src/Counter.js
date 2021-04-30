@@ -1,21 +1,33 @@
-const Counter = ({ count, setCount }) => {
+import { useState } from "react";
+
+const Counter = () => {
+    const [count, setCount] = useState(0);
     return (
         <div className="counter">
             <div>
-                <div
-                    onClick={() => {
-                        setCount(count - 1);
-                    }}
-                >
-                    -
+                <div>
+                    {count > 0 && (
+                        <div
+                            onClick={() => {
+                                setCount(count - 1);
+                            }}
+                        >
+                            -
+                        </div>
+                    )}
                 </div>
+
                 <div id="count">{count}</div>
-                <div
-                    onClick={() => {
-                        setCount(count + 1);
-                    }}
-                >
-                    +
+                <div>
+                    {count < 10 && (
+                        <div
+                            onClick={() => {
+                                setCount(count + 1);
+                            }}
+                        >
+                            +
+                        </div>
+                    )}
                 </div>
             </div>
             <button
