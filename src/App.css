@@ -43,7 +43,6 @@
 
 .container > div {
     display: flex;
-    /* background-color: tomato; */
     height: 100px;
 }
 
